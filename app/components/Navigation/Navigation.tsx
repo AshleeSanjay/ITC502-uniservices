@@ -1,13 +1,21 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 export default function NavBar() {
+  const router = useRouter();
+  const handleNavigate = (route: string) => {
+    router.push(route);
+  };
   return (
     <nav className="bg-black text-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center">
-          <img
-            src="University.png"
-            className="h-8 mr-3"
-            alt="University Logo"
-          />
+          <svg className="w-10 h-10 mr-2">
+            <image
+              xlinkHref="/University.png"
+              style={{ width: "50px", height: "50px" }}
+            />
+          </svg>
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Kyvingus University
           </span>
@@ -19,7 +27,6 @@ export default function NavBar() {
           aria-controls="navbar-default"
           aria-expanded="false"
         >
-          <span className="sr-only">Open main menu</span>
           <svg
             className="w-5 h-5"
             aria-hidden="true"
@@ -29,9 +36,9 @@ export default function NavBar() {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 1h15M1 7h15M1 13h15"
             />
           </svg>
@@ -41,7 +48,7 @@ export default function NavBar() {
             <li>
               <a
                 href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
                 aria-current="page"
               >
                 Home
@@ -50,26 +57,40 @@ export default function NavBar() {
             <li>
               <a
                 href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
               >
                 About
               </a>
             </li>
             <li>
+              <link rel="pages/login" href="" />
               <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+                href="../pages/login"
+                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
+                onClick={() => handleNavigate("login")}
               >
                 Services
               </a>
+              <link />
             </li>
             <li>
               <a
                 href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
               >
                 Contact
               </a>
+            </li>
+            <li>
+              <link rel="pages/login" href="" />
+              <a
+                href="../pages/login"
+                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110"
+                onClick={() => handleNavigate("login")}
+              >
+                Log in
+              </a>
+              <link />
             </li>
           </ul>
         </div>

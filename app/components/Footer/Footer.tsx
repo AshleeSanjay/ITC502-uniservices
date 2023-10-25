@@ -6,7 +6,12 @@ export default function Footer() {
           href="#"
           className="flex justify-center items-center text-2xl font-semibold"
         >
-          <img className="logo" src="University.png" alt="" />
+          <svg className="w-10 h-10 mr-2">
+            <image
+              xlinkHref="/University.png"
+              style={{ width: "50px", height: "50px" }}
+            />
+          </svg>
           Kyvingus University
         </a>
         <p className="my-6">
