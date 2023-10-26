@@ -1,6 +1,6 @@
 "use client";
 
-import LoginPage from "../../pages/login/LoginPage";
+import LoginPage from "@/components/Forms/LoginPage";
 import { useRouter } from "next/navigation";
 
 export default function LoginPageWrapper() {
