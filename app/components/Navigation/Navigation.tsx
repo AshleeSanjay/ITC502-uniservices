@@ -1,11 +1,29 @@
-"use client";
-import { useRouter } from "next/navigation";
+import Link from 'next/link';
+import React from 'react';
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/papes/about' },
+  { label: 'Services', href: '/pages/services' },
+  { label: 'Contact', href: '#' },
+  { label: 'Log in', href: '/pages/login' }
+];
+
+interface NavLinkProps {
+  href: string;
+  label: string;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ href, label }) => (
+  <Link
+    href={href}
+    className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
+  >
+    {label}
+  </Link>
+);
 
 export default function NavBar() {
-  const router = useRouter();
-  const handleNavigate = (route: string) => {
-    router.push(route);
-  };
   return (
     <nav className="bg-black text-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -16,10 +34,12 @@ export default function NavBar() {
               style={{ width: "50px", height: "50px" }}
             />
           </svg>
+
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Kyvingus University
           </span>
         </a>
+
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -43,55 +63,14 @@ export default function NavBar() {
             />
           </svg>
         </button>
+        
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-black dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
-                aria-current="page"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <link rel="pages/login" href="" />
-              <a
-                href="../pages/login"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
-                onClick={() => handleNavigate("login")}
-              >
-                Services
-              </a>
-              <link />
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
-              >
-                Contact
-              </a>
-            </li>
-            <li>
-              <link rel="pages/login" href="" />
-              <a
-                href="../pages/login"
-                className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110"
-                onClick={() => handleNavigate("login")}
-              >
-                Log in
-              </a>
-              <link />
-            </li>
+            {navItems.map(item => (
+              <li key={item.label}>
+                <NavLink href={item.href} label={item.label} />
+              </li>
+            ))}
           </ul>
         </div>
       </div>
