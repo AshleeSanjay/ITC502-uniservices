@@ -1,7 +1,8 @@
 "use client"
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { db } from '../../firebase'
+
 import { doc, setDoc, Timestamp } from 'firebase/firestore';
+import { db } from '@/config/firebase';
 
 
 
