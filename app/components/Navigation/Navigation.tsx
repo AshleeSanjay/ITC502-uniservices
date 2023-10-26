@@ -19,6 +19,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, label }) => (
     href={href}
     className="block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white transition-all hover:text-red-500 border-b-2 border-transparent hover:border-red-500 hover:scale-110 mr-5"
   >
+    
     {label}
   </Link>
 );
