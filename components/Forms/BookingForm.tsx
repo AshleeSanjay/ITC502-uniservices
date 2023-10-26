@@ -13,7 +13,7 @@ interface BookingFormProps {
 interface BookingFormData {
     date: string;
     time: string;
-    bookingType: 'vehicle' | 'room' | 'counselor';
+    bookingType: 'vehicle';
     dropdownOption: string;
     numberOfPeople: number;
 }
@@ -67,7 +67,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ onSuccess, onError }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='p-10'>
 
 
             <div className="mb-4">

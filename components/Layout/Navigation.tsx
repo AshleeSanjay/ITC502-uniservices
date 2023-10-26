@@ -3,10 +3,10 @@ import React from 'react';
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/papes/about' },
-  { label: 'Services', href: '/pages/services' },
-  { label: 'Contact', href: '#' },
-  { label: 'Log in', href: '/pages/login' }
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Log in', href: '/login' }
 ];
 
 interface NavLinkProps {
@@ -26,7 +26,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, label }) => (
 
 export default function NavBar() {
   return (
-    <nav className="bg-black text-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-black text-white border-gray-200 dark:bg-black">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center">
           <svg className="w-10 h-10 mr-2">
@@ -66,7 +66,7 @@ export default function NavBar() {
         </button>
         
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-black dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-black dark:bg-black md:dark:bg-black dark:border-gray-700">
             {navItems.map(item => (
               <li key={item.label}>
                 <NavLink href={item.href} label={item.label} />

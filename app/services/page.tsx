@@ -1,4 +1,4 @@
-import AuthCheck2 from "../login/AuthCheck2";
+import AuthCheck2 from "../../utils/AuthCheck2";
 
 export default function Services() {
 
@@ -146,6 +146,8 @@ export default function Services() {
         </p>
       </div>
     </div>
+
     </AuthCheck2>
+    
   );
 }

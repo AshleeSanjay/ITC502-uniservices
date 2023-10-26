@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { auth } from "../../firebase";
+import { auth } from "../config/firebase";
 import { Auth, User } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 
@@ -9,6 +9,7 @@ type AuthCheckProps = {
 };
 
 export default function AuthCheck({ children }: AuthCheckProps) {
+    
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();  // instantiate the router
