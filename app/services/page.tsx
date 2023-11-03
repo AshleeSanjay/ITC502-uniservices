@@ -1,14 +1,9 @@
-"use client";
-import { useRequireAuth } from "../../pages/login/withAuth";
-import { useRouter } from "next/navigation";
+import AuthCheck2 from "../../utils/AuthCheck2";
 
 export default function Services() {
-  const router = useRouter();
-  useRequireAuth();
-  const handleNavigate = (route: string) => {
-    router.push(route);
-  };
+
   return (
+    <AuthCheck2>
     <div>
       <div className="frame md:grid">
         <div className="service-container md:grid">
@@ -62,7 +57,7 @@ export default function Services() {
             className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => handleNavigate("bookings")}
+         
           >
             <div className="h-20 w-25">
               <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
@@ -88,7 +83,7 @@ export default function Services() {
             className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => handleNavigate("bookings")}
+
           >
             <div className="h-20 w-25">
               <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
@@ -114,7 +109,7 @@ export default function Services() {
             className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => handleNavigate("bookings")}
+
           >
             <div className="h-20 w-25">
               <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
@@ -151,5 +146,8 @@ export default function Services() {
         </p>
       </div>
     </div>
+
+    </AuthCheck2>
+    
   );
 }
