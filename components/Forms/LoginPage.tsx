@@ -29,7 +29,7 @@ export default function LoginPage({ router }: LoginPageProps) {
       const user = userCredential.user;
 
       if (user) {
-        router.push("/pages/services");
+        router.push("/services");
       } else {
         setError("Invalid email or password");
       }
