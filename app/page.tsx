@@ -1,3 +1,4 @@
+import React from "react";
 import HomePage from "../components/HomePage/page"; //
 
 export default function Home() {
@@ -8,4 +9,4 @@ export default function Home() {
   );
 }
 
-//HomePage-Updated 09/11//
+//HomePage-Updated//

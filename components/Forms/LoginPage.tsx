@@ -3,7 +3,7 @@
 import { NextRouter } from "next/router";
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "@/config/firebase";
+import { app } from "../../config/firebase";
 
 interface LoginPageProps {
   router: NextRouter;
