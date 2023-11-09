@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation"; // Import useRouter
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "@/config/firebase";
+import { app } from "../../config/firebase";
 
 export default function LoginPage() {
   const router = useRouter(); // Use the useRouter hook
@@ -28,6 +28,20 @@ const handleSignIn = async (e: React.FormEvent) => {
   }
 };
 
+
+
+      if (user) {
+        router.push("/services");
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (error: any) {
+      console.error("Authentication error", error);
+      setError("Invalid email or password");
+    } finally {
+      setIsLoading(false); // Set isLoading to false when sign-in completes (whether successful or not)
+    }
+  };
 
   return (
     <section
