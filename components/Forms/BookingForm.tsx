@@ -1,10 +1,9 @@
 "use client"
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { doc, setDoc, Timestamp } from 'firebase/firestore';
-import { db } from '@/config/firebase';
-
-
+import { app, db } from '@/config/firebase';
 
 interface BookingFormProps {
     onSuccess?: () => void;
@@ -14,23 +13,46 @@ interface BookingFormProps {
 interface BookingFormData {
     date: string;
     time: string;
-    bookingType: 'vehicle';
+    bookingType: 'vehicle' | 'room' | 'counselor';
     dropdownOption: string;
     numberOfPeople: number;
+    userEmail?: string; // Optional field to store the user's email
 }
 
 const BookingForm: React.FC<BookingFormProps> = ({ onSuccess, onError }) => {
+    const router = useRouter();
+    const auth = getAuth(app);
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+            if (authUser) {
+                setUser(authUser);
+            } else {
+                router.push('/login');
+            }
+        });
+
+        return unsubscribe;
+    }, [router]);
 
     const initialFormState: BookingFormData = {
         date: new Date().toISOString().slice(0, 10),
         time: '12:00',
         bookingType: 'vehicle',
         dropdownOption: 'car',
-        numberOfPeople: 1
+        numberOfPeople: 1,
+        userEmail: user?.email || undefined // Set the user's email if available
     };
 
     const [formData, setFormData] = useState<BookingFormData>(initialFormState);
 
+    useEffect(() => {
+        // Update the form data with the user's email when the user state changes
+        if (user) {
+            setFormData(prevState => ({ ...prevState, userEmail: user.email! }));
+        }
+    }, [user]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -38,14 +60,22 @@ const BookingForm: React.FC<BookingFormProps> = ({ onSuccess, onError }) => {
     };
 
 
+   
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
+
+        if (!user) {
+            onError?.("User is not authenticated");
+            return;
+        }
 
         try {
             const newBooking = {
                 ...formData,
-                date: Timestamp.fromDate(new Date(`${formData.date} ${formData.time}:00`)) // Convert to Firebase Timestamp format
+                userEmail: user.email, // Include the user's email in the booking
+                date: Timestamp.fromDate(new Date(`${formData.date} ${formData.time}:00`))
             };
+
 
             // Define a custom document name
             const customDocName = `${formData.bookingType}, ${formData.dropdownOption}`; // Example format: "2023-10-05-12:00-vehicle"
