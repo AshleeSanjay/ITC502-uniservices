@@ -1,32 +1,34 @@
 "use client";
-
-import { NextRouter } from "next/router";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../config/firebase";
 
-interface LoginPageProps {
-  router: NextRouter;
-}
-
-export default function LoginPage({ router }: LoginPageProps) {
+export default function LoginPage() {
+  const router = useRouter(); // Use the useRouter hook
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignIn = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const auth = getAuth(app);
-    setIsLoading(true);
+const handleSignIn = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsLoading(true);
 
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
+  try {
+    const userCredential = await signInWithEmailAndPassword(getAuth(app), email, password);
+    // If sign-in is successful, redirect to the services page
+    router.push("/services");
+  } catch (error) {
+    console.error("Authentication error", error);
+    // Set error message if there is an issue with sign-in
+    setError("Invalid email or password");
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+
 
       if (user) {
         router.push("/services");
@@ -40,6 +42,7 @@ export default function LoginPage({ router }: LoginPageProps) {
       setIsLoading(false); // Set isLoading to false when sign-in completes (whether successful or not)
     }
   };
+
   return (
     <section
       className="bg-gray-50 dark:bg-gray-900"
