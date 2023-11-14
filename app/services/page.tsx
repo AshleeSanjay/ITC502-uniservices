@@ -110,7 +110,7 @@ export default function Services() {
                 <div className="h-20 w-25">
                   <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
                     <h2 className="mb-50 text-5xl text-white font-semibold">
-                      Book a Counselor{" "}
+                      Book a Counsellor{" "}
                       <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                         -&gt;
                       </span>
