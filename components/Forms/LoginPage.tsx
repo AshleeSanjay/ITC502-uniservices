@@ -2,7 +2,7 @@
 
 import { NextRouter } from "next/router";
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "@/config/firebase";
 
 interface LoginPageProps {
@@ -14,6 +14,25 @@ export default function LoginPage({ router }: LoginPageProps) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleGoogleSignIn = async () => {
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      // This gives you a Google Access Token. You can use it to access Google APIs.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user = result.user;
+
+      // Redirect the user after successful login
+      router.push("/services");
+    } catch (error) {
+      console.error("Error during Google sign-in", error);
+      setError("Failed to sign in with Google");
+    }
+  };
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,6 +81,15 @@ export default function LoginPage({ router }: LoginPageProps) {
               Sign in to your account
             </h1>
             <form className="space-y-5 md:space-y-6" onSubmit={handleSignIn}>
+             
+              <button
+                type="button"
+                onClick={handleGoogleSignIn}
+                className="w-full text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-800 dark:focus:ring-blue-800"
+              >
+                Sign in with Google
+              </button>
+
               <div>
                 <label
                   htmlFor="email"
