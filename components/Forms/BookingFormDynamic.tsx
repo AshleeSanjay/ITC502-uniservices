@@ -2,13 +2,15 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { doc, setDoc, Timestamp, deleteDoc } from 'firebase/firestore';
+import { doc, setDoc, Timestamp } from 'firebase/firestore';
 import { app, db } from '@/config/firebase';
 
 interface BookingFormProps {
+    predefinedBookingType: 'vehicle' | 'room' | 'counselor'; // Required predefined booking type
     onSuccess?: () => void;
     onError?: (error: any) => void;
 }
+
 
 interface BookingFormData {
     date: string;
@@ -19,11 +21,9 @@ interface BookingFormData {
     userEmail?: string; // Optional field to store the user's email
 }
 
-
-const BookingForm: React.FC<BookingFormProps> = ({ onSuccess, onError }) => {
+const BookingForm: React.FC<BookingFormProps> = ({ predefinedBookingType, onSuccess, onError }) => {
     const router = useRouter();
     const auth = getAuth(app);
-    
     const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
@@ -37,33 +37,31 @@ const BookingForm: React.FC<BookingFormProps> = ({ onSuccess, onError }) => {
 
         return unsubscribe;
     }, [router]);
-    
 
     const initialFormState: BookingFormData = {
         date: new Date().toISOString().slice(0, 10),
         time: '12:00',
-        bookingType: 'vehicle',
+        bookingType: predefinedBookingType, // Directly use the predefined type
         dropdownOption: 'car',
         numberOfPeople: 1,
-        userEmail: user?.email || undefined // Set the user's email if available
+        userEmail: user?.email || undefined
     };
 
     const [formData, setFormData] = useState<BookingFormData>(initialFormState);
 
     useEffect(() => {
-        // Reset the dropdown option when the booking type changes
-        setFormData(prevState => ({
-            ...prevState,
-            dropdownOption: bookingOptions[prevState.bookingType][0]
-        }));
-    }, [formData.bookingType]);
-    
+        // Update the form data with the user's email when the user state changes
+        if (user) {
+            setFormData(prevState => ({ ...prevState, userEmail: user.email! }));
+        }
+    }, [user]);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prevState => ({ ...prevState, [name]: value }));
     };
 
-    
+
    
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -96,38 +94,16 @@ const BookingForm: React.FC<BookingFormProps> = ({ onSuccess, onError }) => {
 
 
     const bookingOptions = {
-        vehicle: [
-            'Campus Shuttle', 'Electric Car', 'Minivan', 
-            'Charter Bus', 'Bicycle', 'Golf Cart'
-        ],
-        room: [
-            'Lecture Hall', 'Seminar Room', 'Study Pod', 
-            'Computer Lab', 'Library Carrel', 'Group Workspace'
-        ],
-        counselor: [
-            'Prof. Einstein', 'Dr. Curie', 'Dr. Hawking', 
-            'Prof. Turing', 'Dr. Goodall', 'Prof. Sagan'
-        ]
+        vehicle: ['Car', 'Bike', 'Truck'],
+        room: ['Conference Room', 'Single Room', 'Double Room'],
+        counselor: ['Dr. Smith', 'Dr. Johnson', 'Dr. Williams']
     };
-    
-    
+
     return (
         <form onSubmit={handleSubmit} className='p-10'>
 
 
-            <div className="mb-4">
-                <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Booking Type:</label>
-                <select
-                    name="bookingType"
-                    value={formData.bookingType}
-                    onChange={handleChange}
-                    className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                >
-                    <option value="vehicle">Vehicle</option>
-                    <option value="room">Room</option>
-                    <option value="counselor">Counselor</option>
-                </select>
-            </div>
+           
 
 
             <div className="mb-4">
@@ -170,7 +146,18 @@ const BookingForm: React.FC<BookingFormProps> = ({ onSuccess, onError }) => {
                     />
                 </div>
             </div>
-        
+            <div className="mb-4">
+                <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Number of People:</label>
+                <input
+                    type="number"
+                    name="numberOfPeople"
+                    value={formData.numberOfPeople}
+                    onChange={handleChange}
+                    required
+                    min="1"
+                    className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                />
+            </div>
 
 
             <div className='flex justify-end'>

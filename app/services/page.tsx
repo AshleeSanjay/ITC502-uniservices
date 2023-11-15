@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import AuthCheck2 from "../../utils/AuthCheck2";
 
+
 export default function Services() {
   return (
     <AuthCheck2>
@@ -46,82 +47,86 @@ export default function Services() {
             <img className="image" src="/services.jpg" alt="" />
           </div>
         </div>
-        <main
-          className="flex flex-col items-center justify-between p-32"
-          style={{
-            background: "linear-gradient(to bottom, rgb(49, 62, 60), #ffffff)",
-          }}
-        >
-          <div className="mb-32 grid text-center lg:max-w-6xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left">
-            <Link href="/booking">
-              <div
-                style={{ backgroundColor: "rgb(196, 72, 54)" }}
-                className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
-                rel="noopener noreferrer"
-              >
-                <div className="h-20 w-25">
-                  <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
-                    <h2 className="mb-50 text-5xl text-white font-semibold">
-                      Book a Vehicle{" "}
-                      <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                        -&gt;
-                      </span>
-                    </h2>
-                  </div>
-                </div>
-                <div className="grid grid-rows-2 gap-5">
-                  <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
-                    "Drive Your Success: Booking a Vehicle, Your Journey Starts
-                    Here"
-                  </p>
-                </div>
+
+        <div>
+          <img className="image" src="/services.jpg" alt="" />
+        </div>
+      </div>
+      <main
+        className="flex flex-col items-center justify-between p-32"
+        style={{
+          background: "linear-gradient(to bottom, rgb(49, 62, 60), #ffffff)",
+        }}
+      >
+        <div className="mb-32 grid text-center lg:max-w-6xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left">
+          <a
+            href="/services/vehicle"
+            style={{ backgroundColor: "rgb(196, 72, 54)" }}
+            className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
+            target="_blank"
+            rel="noopener noreferrer"
+         
+          >
+            <div className="h-20 w-25">
+              <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
+                <h2 className="mb-50 text-5xl text-white font-semibold">
+                  Book a Vehicle{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                    -&gt;
+                  </span>
+                </h2>
               </div>
-            </Link>
-            <Link href="/booking">
-              <div
-                style={{ backgroundColor: "rgb(196, 72, 54)" }}
-                className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
-                rel="noopener noreferrer"
-              >
-                <div className="h-20 w-25">
-                  <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
-                    <h2 className="mb-50 text-5xl text-white font-semibold">
-                      Book a Classroom{" "}
-                      <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                        -&gt;
-                      </span>
-                    </h2>
-                  </div>
-                </div>
-                <div className="grid grid-rows-2 gap-5">
-                  <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
-                    "Learning Begins Here: Classroom Booking, Your Path to
-                    Knowledge"
-                  </p>
-                </div>
+            </div>
+            <div className="grid grid-rows-2 gap-5">
+              <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
+                "Drive Your Success: Booking a Vehicle, Your Journey Starts
+                Here"
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="/services/classroom"
+            style={{ backgroundColor: "rgb(196, 72, 54)" }}
+            className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
+            target="_blank"
+            rel="noopener noreferrer"
+
+          >
+            <div className="h-20 w-25">
+              <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
+                <h2 className="mb-50 text-5xl text-white font-semibold">
+                  Book a Classroom{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                    -&gt;
+                  </span>
+                </h2>
               </div>
-            </Link>
-            <Link href="/booking">
-              <div
-                style={{ backgroundColor: "rgb(196, 72, 54)" }}
-                className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
-                rel="noopener noreferrer"
-              >
-                <div className="h-20 w-25">
-                  <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
-                    <h2 className="mb-50 text-5xl text-white font-semibold">
-                      Book a Counsellor{" "}
-                      <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                        -&gt;
-                      </span>
-                    </h2>
-                  </div>
-                </div>
-                <div className="grid grid-rows-2 gap-5">
-                  <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
-                    "Guiding Your Way: Booking a Counselor, Your Support System"
-                  </p>
-                </div>
+            </div>
+            <div className="grid grid-rows-2 gap-5">
+              <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
+                "Learning Begins Here: Classroom Booking, Your Path to
+                Knowledge"
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="/services/counselor"
+            style={{ backgroundColor: "rgb(196, 72, 54)" }}
+            className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
+            target="_blank"
+            rel="noopener noreferrer"
+
+          >
+            <div className="h-20 w-25">
+              <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
+                <h2 className="mb-50 text-5xl text-white font-semibold">
+                  Book a Counselor{" "}
+                  <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                    -&gt;
+                  </span>
+                </h2>
               </div>
             </Link>
           </div>
