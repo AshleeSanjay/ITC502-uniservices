@@ -1,46 +1,53 @@
+import React from "react";
+import Link from "next/link";
 import AuthCheck2 from "../../utils/AuthCheck2";
 
 
 export default function Services() {
-
   return (
     <AuthCheck2>
-    <div>
-      <div className="frame md:grid">
-        <div className="service-container md:grid">
-          <div className="flex items-center justify-center text-center">
-            <p className="text-3xl md:text-8xl services-text">Services</p>{" "}
-          </div>
-          <div
-            className="bg-green-500 md:w-3/4 min-h-[240px] items-center justify-center border border-black"
-            style={{
-              backgroundColor: "rgb(130, 179, 121)",
-              width: "100%",
-              minHeight: "240px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              border: "1px solid black",
-            }}
-          >
-            <p
-              className="m-1 max-w-[60ch] text-2xl text-white text-center"
+      <div>
+        <div className="frame md:grid">
+          <div className="service-container md:grid">
+            <div className="flex items-center justify-center text-center">
+              <p className="text-3xl md:text-8xl services-text">Services</p>{" "}
+            </div>
+            <div
+              className="bg-green-500 md:w-3/4 min-h-[240px] items-center justify-center border border-black"
               style={{
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                textAlign: "center",
-                alignContent: "center",
+                backgroundColor: "rgb(130, 179, 121)",
+                width: "100%",
+                minHeight: "240px",
+                display: "flex",
+                justifyContent: "center",
                 alignItems: "center",
+                border: "1px solid black",
               }}
             >
-              "At Kyvingus University, we're dedicated to providing our members
-              with a wide range of services to enhance their educational and
-              personal journeys. Whether you're in need of convenient
-              transportation to and from our campus, a quiet and inspiring space
-              to study and collaborate, or professional guidance and counseling
-              to support your well-being, we've got you covered."
-            </p>
+              <p
+                className="m-1 max-w-[60ch] text-2xl text-white text-center"
+                style={{
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                  textAlign: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                "At Kyvingus University, we're dedicated to providing our
+                members with a wide range of services to enhance their
+                educational and personal journeys. Whether you're in need of
+                convenient transportation to and from our campus, a quiet and
+                inspiring space to study and collaborate, or professional
+                guidance and counseling to support your well-being, we've got
+                you covered."
+              </p>
+            </div>
+          </div>
+          <div>
+            <img className="image" src="/services.jpg" alt="" />
           </div>
         </div>
+
         <div>
           <img className="image" src="/services.jpg" alt="" />
         </div>
@@ -121,34 +128,26 @@ export default function Services() {
                   </span>
                 </h2>
               </div>
-            </div>
-            <div className="grid grid-rows-2 gap-5">
-              <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
-                "Guiding Your Way: Booking a Counselor, Your Support System"
-              </p>
-            </div>
-          </a>
+            </Link>
+          </div>
+        </main>
+        <div
+          className="gap-7 text-center items-center"
+          style={{
+            border: "1px solid black",
+            width: "100%",
+            backgroundColor: "rgb(130, 179, 121)",
+            padding: "100px 100px",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+          }}
+        >
+          <p className="text-2xl text-white text-center">
+            "Navigating Academic Success with Kyvingus University: Where Every
+            Booking, Be it for a Vehicle, Classroom, or Counselor, Reflects Our
+            Commitment to Your Journey of Excellence"
+          </p>
         </div>
-      </main>
-      <div
-        className="gap-7 text-center items-center"
-        style={{
-          border: "1px solid black",
-          width: "100%",
-          backgroundColor: "rgb(130, 179, 121)",
-          padding: "100px 100px",
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-        }}
-      >
-        <p className="text-2xl text-white text-center">
-          "Navigating Academic Success with Kyvingus University: Where Every
-          Booking, Be it for a Vehicle, Classroom, or Counselor, Reflects Our
-          Commitment to Your Journey of Excellence"
-        </p>
       </div>
-    </div>
-
     </AuthCheck2>
-    
   );
 }
