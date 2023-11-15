@@ -99,4 +99,11 @@ This cutting edge application allows users to book various services such as vehi
 1. **Error Handling**: Consider adding more comprehensive error handling, especially for Firebase operations.
 2. **Form Validation**: Implement form validation to ensure users provide valid data before submission.
 3. **Styling**: Ensure consistent styling across pages and components for a cohesive user experience.
+
+---
+
+# 📌 **Reflections** 📌
+
+1. Instead of delete, we should cancel.
+
 ---
