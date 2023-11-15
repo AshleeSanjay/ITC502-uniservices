@@ -1,6 +1,6 @@
 import AuthCheck2 from "../../utils/AuthCheck2";
 import BookingForm from "../../components/Forms/BookingForm";
-
+import UserBookings from "@/components/User/UserBookings";
 
 export default function Services() {
 
@@ -8,7 +8,8 @@ export default function Services() {
     <AuthCheck2>
 
     <BookingForm />
-
+    {/* <BookingsTable/> */}
+    <UserBookings />
     </AuthCheck2>
   );
 }

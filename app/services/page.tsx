@@ -1,5 +1,6 @@
 import AuthCheck2 from "../../utils/AuthCheck2";
 
+
 export default function Services() {
 
   return (
@@ -52,7 +53,7 @@ export default function Services() {
       >
         <div className="mb-32 grid text-center lg:max-w-6xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left">
           <a
-            href="#"
+            href="/services/vehicle"
             style={{ backgroundColor: "rgb(196, 72, 54)" }}
             className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
             target="_blank"
@@ -78,7 +79,7 @@ export default function Services() {
           </a>
 
           <a
-            href="#"
+            href="/services/classroom"
             style={{ backgroundColor: "rgb(196, 72, 54)" }}
             className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
             target="_blank"
@@ -104,7 +105,7 @@ export default function Services() {
           </a>
 
           <a
-            href="#"
+            href="/services/counselor"
             style={{ backgroundColor: "rgb(196, 72, 54)" }}
             className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
             target="_blank"
