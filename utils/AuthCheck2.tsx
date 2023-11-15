@@ -17,7 +17,7 @@ export default function AuthCheck({ children }: AuthCheckProps) {
     useEffect(() => {
         return auth.onAuthStateChanged(user => {
             if (!user) {
-                router.push('/pages/login');  // navigate to the login page
+                router.push('/login');  // navigate to the login page
             } else {
                 setUser(user);
             }

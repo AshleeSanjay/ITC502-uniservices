@@ -2,6 +2,52 @@ import React from "react";
 import Link from "next/link";
 import AuthCheck2 from "../../utils/AuthCheck2";
 
+// Define an interface for the component props
+interface ServiceBlockProps {
+  href: string;
+  title: string;
+  description: string;
+}
+
+const serviceHeroContent = {
+
+  title: `Services`,
+
+  description: `At Kyvingus University, we're dedicated to providing our
+  members with a wide range of services to enhance their
+  educational and personal journeys. Whether you're in need of
+  convenient transportation to and from our campus, a quiet and
+  inspiring space to study and collaborate, or professional
+  guidance and counseling to support your well-being, we've got
+  you covered.`,
+
+  shinner: `Navigating Academic Success with Kyvingus University: Where Every
+  Booking, Be it for a Vehicle, Classroom, or Counselor, Reflects Our
+  Commitment to Your Journey of Excellence`
+}
+
+const ServiceBlock = ({ href, title, description }: ServiceBlockProps) => (
+  <Link href={href}>
+    <div
+      style={{ backgroundColor: "rgb(196, 72, 54)" }}
+      className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
+      rel="noopener noreferrer"
+    >
+      <div className="h-20 w-25">
+        <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
+          <h2 className="mb-50 text-5xl text-white font-semibold">
+            {title} <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">-&gt;</span>
+          </h2>
+        </div>
+      </div>
+      <div className="grid grid-rows-2 gap-5">
+        <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
+          {description}
+        </p>
+      </div>
+    </div>
+  </Link>
+);
 
 export default function Services() {
   return (
@@ -10,7 +56,7 @@ export default function Services() {
         <div className="frame md:grid">
           <div className="service-container md:grid">
             <div className="flex items-center justify-center text-center">
-              <p className="text-3xl md:text-8xl services-text">Services</p>{" "}
+              <p className="text-3xl md:text-8xl services-text">{serviceHeroContent.title}</p>{" "}
             </div>
             <div
               className="bg-green-500 md:w-3/4 min-h-[240px] items-center justify-center border border-black"
@@ -33,13 +79,7 @@ export default function Services() {
                   alignItems: "center",
                 }}
               >
-                "At Kyvingus University, we're dedicated to providing our
-                members with a wide range of services to enhance their
-                educational and personal journeys. Whether you're in need of
-                convenient transportation to and from our campus, a quiet and
-                inspiring space to study and collaborate, or professional
-                guidance and counseling to support your well-being, we've got
-                you covered."
+                {serviceHeroContent.description}
               </p>
             </div>
           </div>
@@ -48,87 +88,29 @@ export default function Services() {
           </div>
         </div>
 
-        <div>
-          <img className="image" src="/services.jpg" alt="" />
-        </div>
-      </div>
-      <main
-        className="flex flex-col items-center justify-between p-32"
-        style={{
-          background: "linear-gradient(to bottom, rgb(49, 62, 60), #ffffff)",
-        }}
-      >
-        <div className="mb-32 grid text-center lg:max-w-6xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left">
-          <a
-            href="/services/vehicle"
-            style={{ backgroundColor: "rgb(196, 72, 54)" }}
-            className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
-            target="_blank"
-            rel="noopener noreferrer"
-         
-          >
-            <div className="h-20 w-25">
-              <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
-                <h2 className="mb-50 text-5xl text-white font-semibold">
-                  Book a Vehicle{" "}
-                  <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                    -&gt;
-                  </span>
-                </h2>
-              </div>
-            </div>
-            <div className="grid grid-rows-2 gap-5">
-              <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
-                "Drive Your Success: Booking a Vehicle, Your Journey Starts
-                Here"
-              </p>
-            </div>
-          </a>
+        <main className="flex flex-col items-center justify-between p-32" style={{ background: "linear-gradient(to bottom, rgb(49, 62, 60), #ffffff)" }}>
+          <div className="mb-32 grid text-center lg:max-w-6xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left">
+           
+           
+            <ServiceBlock
+              href="/services/vehicle"
+              title="Book a Vehicle"
+              description="Drive Your Success: Booking a Vehicle, Your Journey Starts Here"
+            />
 
-          <a
-            href="/services/classroom"
-            style={{ backgroundColor: "rgb(196, 72, 54)" }}
-            className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
-            target="_blank"
-            rel="noopener noreferrer"
+            <ServiceBlock
+              href="/services/classroom"
+              title="Book a Classroom"
+              description="Learning Begins Here: Classroom Booking, Your Path to Knowledge"
+            />
 
-          >
-            <div className="h-20 w-25">
-              <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
-                <h2 className="mb-50 text-5xl text-white font-semibold">
-                  Book a Classroom{" "}
-                  <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                    -&gt;
-                  </span>
-                </h2>
-              </div>
-            </div>
-            <div className="grid grid-rows-2 gap-5">
-              <p className="m-8 max-w-[40ch] text-2xl text-white row-start-2">
-                "Learning Begins Here: Classroom Booking, Your Path to
-                Knowledge"
-              </p>
-            </div>
-          </a>
+            <ServiceBlock
+              href="/services/councellor"
+              title="Book a Counsellor"
+              description="Guiding Your Way: Booking a Counselor, Your Support System"
+            />
 
-          <a
-            href="/services/counselor"
-            style={{ backgroundColor: "rgb(196, 72, 54)" }}
-            className="group relative rounded-lg border border-transparent px-0.5 py-0.5 transition-all hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark-bg-neutral-800/30 mr-7 transform scale-100 hover:scale-110"
-            target="_blank"
-            rel="noopener noreferrer"
 
-          >
-            <div className="h-20 w-25">
-              <div className="h-30 w-30 rounded-t-md bg-black p-5 transition-all">
-                <h2 className="mb-50 text-5xl text-white font-semibold">
-                  Book a Counselor{" "}
-                  <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                    -&gt;
-                  </span>
-                </h2>
-              </div>
-            </Link>
           </div>
         </main>
         <div
@@ -142,9 +124,7 @@ export default function Services() {
           }}
         >
           <p className="text-2xl text-white text-center">
-            "Navigating Academic Success with Kyvingus University: Where Every
-            Booking, Be it for a Vehicle, Classroom, or Counselor, Reflects Our
-            Commitment to Your Journey of Excellence"
+            {serviceHeroContent.shinner}
           </p>
         </div>
       </div>

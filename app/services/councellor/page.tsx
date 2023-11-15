@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import AuthCheck2 from "@/utils/AuthCheck2";
 import BookingFormDynamic from "@/components/Forms/BookingFormDynamic";
 
@@ -17,7 +16,7 @@ export default function Services() {
             </p>
         </div>
         </div>
-      <BookingFormDynamic predefinedBookingType={"vehicle"} />
+      <BookingFormDynamic predefinedBookingType={"counselor"} />
     </AuthCheck2>
   );
 }
